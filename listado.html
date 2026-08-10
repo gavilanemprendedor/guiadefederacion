@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Negocios | Guía de Federación</title>
+<meta name="description" content="Negocios de Federación, Entre Ríos, agrupados por rubro.">
+<link rel="icon" type="image/jpeg" href="images/favicon.jpg">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body { font-family: 'Segoe UI', system-ui, sans-serif; }
+  .font-serif-heading { font-family: Georgia, 'Times New Roman', serif; }
+  .grad-text {
+    background: linear-gradient(90deg, #a5551a, #d9762e 45%, #12798c);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .glass-card {
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(217,118,46,0.15);
+  }
+  .reveal { transition: opacity 0.7s ease, transform 0.7s ease; }
+</style>
+</head>
+<body class="bg-gradient-to-b from-[#fdf3e9] via-[#fdf8f3] to-[#eaf6f5] text-[#34281f] min-h-screen">
+
+<header class="sticky top-0 z-50 backdrop-blur-md bg-[#fdf8f3]/80 border-b border-[#f0e4d6]">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="index.html" class="font-serif-heading text-lg text-[#0b5461]">Guía de Federación</a>
+    <a href="#sumate" class="text-sm font-semibold px-4 py-2 rounded-full border border-[#0b5461]/20 hover:bg-[#0b5461]/5 transition-all duration-300">Sumar mi negocio</a>
+  </div>
+</header>
+
+<section class="max-w-4xl mx-auto px-6 pt-14 pb-6 text-center">
+  <a href="index.html" class="inline-flex items-center gap-1 text-sm font-semibold text-[#0b5461] hover:underline mb-4">
+    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+    Volver a todos los rubros
+  </a>
+  <div class="flex items-center justify-center gap-3 mb-2" id="rubro-icono-wrap"></div>
+  <h1 id="rubro-titulo" class="font-serif-heading text-3xl md:text-4xl font-bold tracking-tight grad-text">Negocios</h1>
+</section>
+
+<div id="lista-contenedor" class="max-w-3xl mx-auto px-6 pb-20"></div>
+
+<section id="sumate" class="max-w-4xl mx-auto px-6 pb-24">
+  <div class="glass-card rounded-3xl p-10 text-center">
+    <h2 class="font-serif-heading text-2xl font-bold tracking-tight mb-3">¿Tenés un comercio en Federación?</h2>
+    <p class="text-[#7a6a5c] max-w-md mx-auto mb-7">Sumate a la Guía y hacé que vecinos y turistas encuentren tu negocio.</p>
+    <a href="https://instagram.com/guiadefederacion" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#a5551a] text-white font-semibold transition-all duration-300 hover:scale-[1.03] hover:shadow-lg hover:shadow-[#a5551a]/25">
+      Sumar mi negocio — Sin costo
+    </a>
+  </div>
+</section>
+
+<footer class="border-t border-[#f0e4d6] py-8 text-center text-sm text-[#7a6a5c]">
+  <a href="https://instagram.com/guiadefederacion" target="_blank" rel="noopener" class="font-semibold text-[#a5551a] hover:underline">Instagram @guiadefederacion</a>
+  <p class="mt-3 text-xs text-[#a89c8c]">&copy; 2026 Guía de Federación</p>
+</footer>
+
+<script src="data/rubros.js"></script>
+<script src="data/negocios.js"></script>
+<script src="js/main.js"></script>
+<script>
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    var rubroKey = params.get("rubro") || "";
+    var rubroInfo = RUBROS.find(function (r) { return r.nombre === rubroKey; });
+    var etiqueta = rubroInfo ? rubroInfo.etiqueta : (rubroKey || "Negocios");
+
+    document.getElementById("rubro-titulo").textContent = etiqueta;
+    document.title = etiqueta + " | Guía de Federación";
+    if (rubroInfo) {
+      document.getElementById("rubro-icono-wrap").innerHTML = iconSvg(rubroInfo.icono, "w-7 h-7");
+    }
+
+    var negocios = (typeof NEGOCIOS !== "undefined" ? NEGOCIOS : []).filter(function (n) {
+      return n.rubro === rubroKey;
+    });
+
+    var contenedor = document.getElementById("lista-contenedor");
+
+    if (negocios.length === 0) {
+      var empty = document.createElement("div");
+      empty.className = "reveal opacity-0 translate-y-6 glass-card rounded-3xl p-10 text-center max-w-lg mx-auto";
+      empty.innerHTML =
+        '<p class="text-[#7a6a5c] mb-6">Todavía no hay negocios cargados en <strong class="text-[#34281f]">' + etiqueta + '</strong>. ¿Sos vos el primero en sumarte?</p>' +
+        '<a class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#0b5461] text-white font-semibold transition-all duration-300 hover:scale-[1.03]" href="https://instagram.com/guiadefederacion" target="_blank" rel="noopener">Sumar mi negocio</a>';
+      contenedor.appendChild(empty);
+    } else {
+      var lista = document.createElement("div");
+      lista.className = "flex flex-col gap-3";
+      negocios.forEach(function (n, i) {
+        var item = document.createElement("a");
+        item.href = n.instagram;
+        item.target = "_blank";
+        item.rel = "noopener";
+        item.className = "reveal opacity-0 translate-y-6 glass-card rounded-2xl px-6 py-4 flex items-center justify-between gap-4 transition-all duration-300 hover:scale-[1.01] hover:border-[#12798c]/50";
+        item.style.transitionDelay = ((i % 10) * 40) + "ms";
+        item.innerHTML =
+          '<span class="font-semibold">' + n.nombre + '</span>' +
+          '<span class="inline-flex items-center gap-1 text-sm font-semibold text-[#0b5461] shrink-0">Ver Instagram' +
+            '<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>' +
+          '</span>';
+        lista.appendChild(item);
+      });
+      contenedor.appendChild(lista);
+    }
+
+    initReveal();
+  })();
+</script>
+</body>
+</html>
