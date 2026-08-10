@@ -18,19 +18,19 @@ var ICONOS = {
   paint: "M3 3h14v6H3zM7 9v9a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V9"
 };
 
-function iconSvg(nombre, extraClass) {
+function iconSvg(nombre, sizeClass) {
   var d = ICONOS[nombre] || ICONOS.bag;
-  return '<svg class="' + (extraClass || "rubro-icon") + '" viewBox="0 0 24 24" fill="none" stroke="#12798c" stroke-width="1.6" aria-hidden="true"><path d="' + d + '"/></svg>';
+  return '<svg class="' + (sizeClass || "w-6 h-6") + ' text-[#12798c]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="' + d + '"/></svg>';
 }
 
-document.addEventListener("DOMContentLoaded", function () {
+function initReveal() {
   var revealEls = document.querySelectorAll(".reveal");
   if (revealEls.length && "IntersectionObserver" in window) {
     var observer = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
+            entry.target.classList.remove("opacity-0", "translate-y-6");
             observer.unobserve(entry.target);
           }
         });
@@ -42,7 +42,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   } else {
     revealEls.forEach(function (el) {
-      el.classList.add("is-visible");
+      el.classList.remove("opacity-0", "translate-y-6");
     });
   }
-});
+}
+
+document.addEventListener("DOMContentLoaded", initReveal);
