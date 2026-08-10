@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía de Federación — Preview premium</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+  body { font-family: 'Segoe UI', system-ui, sans-serif; }
+  .font-serif-heading { font-family: Georgia, 'Times New Roman', serif; }
+  .grad-text {
+    background: linear-gradient(90deg, #a5551a, #d9762e 45%, #12798c);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .glass-card {
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(217,118,46,0.15);
+  }
+</style>
+</head>
+<body class="bg-gradient-to-b from-[#fdf3e9] via-[#fdf8f3] to-[#eaf6f5] text-[#34281f]">
+
+<header class="sticky top-0 z-50 backdrop-blur-md bg-[#fdf8f3]/80 border-b border-[#f0e4d6]">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <span class="font-serif-heading text-lg text-[#0b5461]">Guía de Federación</span>
+    <a href="#sumate" class="text-sm font-semibold px-4 py-2 rounded-full border border-[#0b5461]/20 hover:bg-[#0b5461]/5 transition-all duration-300">Sumar mi negocio</a>
+  </div>
+</header>
+
+<section class="max-w-6xl mx-auto px-6 pt-20 pb-16 text-center">
+  <span class="inline-block text-xs font-semibold tracking-wide uppercase text-[#a5551a] bg-[#fbe9d8] px-4 py-1.5 rounded-full mb-6">Entre Ríos · Argentina</span>
+  <h1 class="font-serif-heading text-4xl md:text-6xl font-bold tracking-tight leading-tight mb-6">
+    Todo Federación,<br><span class="grad-text">en un solo lugar</span>
+  </h1>
+  <p class="text-lg text-[#7a6a5c] max-w-xl mx-auto mb-10">
+    Alojamiento, comida, servicios y planes — encontrá el negocio local que buscás en segundos, directo a su Instagram.
+  </p>
+  <div class="flex flex-wrap justify-center gap-4">
+    <a href="#rubros" class="px-7 py-3.5 rounded-full bg-[#0b5461] text-white font-semibold transition-all duration-300 hover:scale-[1.03] hover:shadow-lg hover:shadow-[#0b5461]/20">Explorar rubros</a>
+    <a href="#sumate" class="px-7 py-3.5 rounded-full border border-[#a5551a]/30 text-[#a5551a] font-semibold transition-all duration-300 hover:scale-[1.03] hover:bg-[#fbe9d8]">Sumar mi negocio — Es gratis</a>
+  </div>
+</section>
+
+<section id="rubros" class="max-w-6xl mx-auto px-6 pb-24">
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+    <a href="listado.html?rubro=Alojamientos" class="glass-card rounded-3xl p-6 md:col-span-2 md:row-span-2 flex flex-col justify-between transition-all duration-300 hover:scale-[1.02] hover:border-[#12798c]/50">
+      <i data-lucide="home" class="w-8 h-8 text-[#12798c] mb-16"></i>
+      <div>
+        <h3 class="font-serif-heading text-2xl font-semibold mb-1">Alojamientos</h3>
+        <p class="text-sm text-[#7a6a5c]">Cabañas, hospedajes y complejos para tu estadía junto a las termas.</p>
+      </div>
+    </a>
+    <a href="listado.html?rubro=Bienestar" class="glass-card rounded-3xl p-5 flex flex-col justify-between transition-all duration-300 hover:scale-[1.02] hover:border-[#12798c]/50">
+      <i data-lucide="heart-pulse" class="w-7 h-7 text-[#12798c] mb-8"></i>
+      <h3 class="font-semibold">Bienestar</h3>
+    </a>
+    <a href="listado.html?rubro=Seguros" class="glass-card rounded-3xl p-5 flex flex-col justify-between transition-all duration-300 hover:scale-[1.02] hover:border-[#12798c]/50">
+      <i data-lucide="shield-check" class="w-7 h-7 text-[#12798c] mb-8"></i>
+      <h3 class="font-semibold">Seguros</h3>
+    </a>
+    <a href="listado.html?rubro=Comidas para llevar" class="glass-card rounded-3xl p-5 flex flex-col justify-between transition-all duration-300 hover:scale-[1.02] hover:border-[#12798c]/50">
+      <i data-lucide="utensils" class="w-7 h-7 text-[#12798c] mb-8"></i>
+      <h3 class="font-semibold">Comidas para llevar</h3>
+    </a>
+    <a href="listado.html?rubro=Despensas" class="glass-card rounded-3xl p-5 flex flex-col justify-between transition-all duration-300 hover:scale-[1.02] hover:border-[#12798c]/50">
+      <i data-lucide="shopping-basket" class="w-7 h-7 text-[#12798c] mb-8"></i>
+      <h3 class="font-semibold">Despensas</h3>
+    </a>
+    <a href="listado.html?rubro=Eventos-Fiestas" class="glass-card rounded-3xl p-5 flex flex-col justify-between transition-all duration-300 hover:scale-[1.02] hover:border-[#12798c]/50">
+      <i data-lucide="party-popper" class="w-7 h-7 text-[#12798c] mb-8"></i>
+      <h3 class="font-semibold">Eventos y fiestas</h3>
+    </a>
+    <a href="listado.html?rubro=Bailables" class="glass-card rounded-3xl p-5 flex flex-col justify-between transition-all duration-300 hover:scale-[1.02] hover:border-[#12798c]/50">
+      <i data-lucide="music" class="w-7 h-7 text-[#12798c] mb-8"></i>
+      <h3 class="font-semibold">Bailables</h3>
+    </a>
+  </div>
+</section>
+
+<section id="sumate" class="max-w-4xl mx-auto px-6 pb-28">
+  <div class="glass-card rounded-3xl p-10 md:p-14 text-center">
+    <h2 class="font-serif-heading text-3xl font-bold tracking-tight mb-3">¿Tenés un comercio en Federación?</h2>
+    <p class="text-[#7a6a5c] max-w-md mx-auto mb-8">Sumate a la Guía y hacé que vecinos y turistas encuentren tu negocio. Sin costo, sin vueltas: nos escribís por Instagram y quedás publicado.</p>
+    <a href="https://instagram.com/guiadefederacion" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#a5551a] text-white font-semibold transition-all duration-300 hover:scale-[1.03] hover:shadow-lg hover:shadow-[#a5551a]/25">
+      Sumar mi negocio — Sin costo <i data-lucide="arrow-right" class="w-4 h-4"></i>
+    </a>
+  </div>
+</section>
+
+<footer class="border-t border-[#f0e4d6] py-8 text-center text-sm text-[#7a6a5c]">
+  <a href="https://instagram.com/guiadefederacion" target="_blank" rel="noopener" class="font-semibold text-[#a5551a] hover:underline">Instagram @guiadefederacion</a>
+  <p class="mt-3 text-xs text-[#a89c8c]">© 2026 Guía de Federación</p>
+</footer>
+
+<script>lucide.createIcons();</script>
+</body>
+</html>
