@@ -6,6 +6,8 @@
 // Verificado por muestreo (no cuenta por cuenta) — revisar antes de publicar en producción.
 // 2 negocios quedaron afuera por no tener un usuario de Instagram legible en el material
 // (Aime Mia Cafetería y Carlos Bordagaray Seguros).
+// "Maja Boutique" tenía 2 entradas posibles (@maja_boutique y @majaboutique_jazmines980);
+// se dejó solo la primera hasta confirmar si son el mismo negocio.
 
 const NEGOCIOS = [
   { nombre: "IRUPE Apart Hotel", rubro: "Alojamientos", instagram: "https://instagram.com/irupefederacion" },
@@ -38,7 +40,6 @@ const NEGOCIOS = [
   { nombre: "Maja Boutique", rubro: "Tiendas", instagram: "https://instagram.com/maja_boutique" },
   { nombre: "Janna Accesorios", rubro: "Tiendas", instagram: "https://instagram.com/janna_acc" },
   { nombre: "Casa Luján", rubro: "Tiendas", instagram: "https://instagram.com/casalujan" },
-  { nombre: "Maja Boutique Jazmines 980", rubro: "Tiendas", instagram: "https://instagram.com/majaboutique_jazmines980" },
   { nombre: "Donna Store", rubro: "Tiendas", instagram: "https://instagram.com/donna.store.federacion" },
   { nombre: "Macoba Urbano", rubro: "Tiendas", instagram: "https://instagram.com/macoba.urbano" },
   { nombre: "Arco Iriis", rubro: "Tiendas", instagram: "https://instagram.com/arco_iriis" },
@@ -83,11 +84,11 @@ const NEGOCIOS = [
   { nombre: "GZ Informática", rubro: "Gráficas/Tecnología", instagram: "https://instagram.com/gz_informatica_servicios" },
   { nombre: "Niccell", rubro: "Gráficas/Tecnología", instagram: "https://instagram.com/niccell_ok" },
 
-  { nombre: "La Taberna Federación", rubro: "Restaurantes/Cafeterías/Carnicerías", instagram: "https://instagram.com/latabernafederacion" },
-  { nombre: "Parrilla Sabor a Fuego", rubro: "Restaurantes/Cafeterías/Carnicerías", instagram: "https://instagram.com/saborafuegoparrilla" },
-  { nombre: "La Boutique de la Carne", rubro: "Restaurantes/Cafeterías/Carnicerías", instagram: "https://instagram.com/laboutiuque_delacarne" },
-  { nombre: "Divina Providencia (carnicería)", rubro: "Restaurantes/Cafeterías/Carnicerías", instagram: "https://instagram.com/carniceria_divina_providencia" },
-  { nombre: "Lo de Lidia (carnicería)", rubro: "Restaurantes/Cafeterías/Carnicerías", instagram: "https://instagram.com/carniceria_lodelidia" },
+  { nombre: "La Taberna Federación", rubro: "Restaurantes", instagram: "https://instagram.com/latabernafederacion" },
+  { nombre: "Parrilla Sabor a Fuego", rubro: "Restaurantes", instagram: "https://instagram.com/saborafuegoparrilla" },
+  { nombre: "La Boutique de la Carne", rubro: "Carnicerías", instagram: "https://instagram.com/laboutiuque_delacarne" },
+  { nombre: "Divina Providencia (carnicería)", rubro: "Carnicerías", instagram: "https://instagram.com/carniceria_divina_providencia" },
+  { nombre: "Lo de Lidia (carnicería)", rubro: "Carnicerías", instagram: "https://instagram.com/carniceria_lodelidia" },
 
   { nombre: "La Última Campana (noticias)", rubro: "Medios/Regionales/Excursiones", instagram: "https://instagram.com/laultimacampananoticias" },
   { nombre: "FM Posta", rubro: "Medios/Regionales/Excursiones", instagram: "https://instagram.com/fm.posta" },
@@ -101,22 +102,22 @@ const NEGOCIOS = [
   { nombre: "Inmobiliaria Montecarlo", rubro: "Hogar/Inmobiliarias", instagram: "https://instagram.com/inmobmontecarlo" },
   { nombre: "Inmobiliaria Depauli", rubro: "Hogar/Inmobiliarias", instagram: "https://instagram.com/inmobiliariadepauli" },
 
-  { nombre: "Marzoratti Distribuciones", rubro: "Distribuidoras/Pizzerías/Verdulerías", instagram: "https://instagram.com/marzorattidistribuciones.fed" },
-  { nombre: "La Criolla Pizza", rubro: "Distribuidoras/Pizzerías/Verdulerías", instagram: "https://instagram.com/la_criolla_pizza" },
-  { nombre: "Pizzería Del Puerto", rubro: "Distribuidoras/Pizzerías/Verdulerías", instagram: "https://instagram.com/pizzedelpuerto" },
-  { nombre: "Verdulería Alva e Hijos", rubro: "Distribuidoras/Pizzerías/Verdulerías", instagram: "https://instagram.com/alvahijos" },
-  { nombre: "Polirubro Verdulería/Frutería Disfruta", rubro: "Distribuidoras/Pizzerías/Verdulerías", instagram: "https://instagram.com/polirubro.verduleria" },
+  { nombre: "Marzoratti Distribuciones", rubro: "Distribuidoras", instagram: "https://instagram.com/marzorattidistribuciones.fed" },
+  { nombre: "La Criolla Pizza", rubro: "Pizzerías", instagram: "https://instagram.com/la_criolla_pizza" },
+  { nombre: "Pizzería Del Puerto", rubro: "Pizzerías", instagram: "https://instagram.com/pizzedelpuerto" },
+  { nombre: "Verdulería Alva e Hijos", rubro: "Verdulerías", instagram: "https://instagram.com/alvahijos" },
+  { nombre: "Polirubro Verdulería/Frutería Disfruta", rubro: "Verdulerías", instagram: "https://instagram.com/polirubro.verduleria" },
 
-  { nombre: "Pintu del Centro Federación", rubro: "Pinturerías/Panaderías/Corralones", instagram: "https://instagram.com/pintudelcentrofederacion" },
-  { nombre: "La Reina Panadería", rubro: "Pinturerías/Panaderías/Corralones", instagram: "https://instagram.com/lareinapanificacion" },
-  { nombre: "La Piamontesa (panadería)", rubro: "Pinturerías/Panaderías/Corralones", instagram: "https://instagram.com/lapiamontesapanaderia" },
-  { nombre: "Corralón Federación", rubro: "Pinturerías/Panaderías/Corralones", instagram: "https://instagram.com/corralon.federacion" },
+  { nombre: "Pintu del Centro Federación", rubro: "Pinturerías", instagram: "https://instagram.com/pintudelcentrofederacion" },
+  { nombre: "La Reina Panadería", rubro: "Panaderías", instagram: "https://instagram.com/lareinapanificacion" },
+  { nombre: "La Piamontesa (panadería)", rubro: "Panaderías", instagram: "https://instagram.com/lapiamontesapanaderia" },
+  { nombre: "Corralón Federación", rubro: "Corralones", instagram: "https://instagram.com/corralon.federacion" },
 
-  { nombre: "Drugstore Verde Esmeralda", rubro: "Kioscos/Drugstores/Mecánica/Veterinarias/Super/Farmacias/Profesionales", instagram: "https://instagram.com/drugstoreverde.esmeralda" },
-  { nombre: "Drugstore Urquiza", rubro: "Kioscos/Drugstores/Mecánica/Veterinarias/Super/Farmacias/Profesionales", instagram: "https://instagram.com/drugstoreurquiza_" },
-  { nombre: "Chetomal Drugstore", rubro: "Kioscos/Drugstores/Mecánica/Veterinarias/Super/Farmacias/Profesionales", instagram: "https://instagram.com/chetomaldrugstore" },
-  { nombre: "A La Cucha — Clínica Veterinaria", rubro: "Kioscos/Drugstores/Mecánica/Veterinarias/Super/Farmacias/Profesionales", instagram: "https://instagram.com/veterinaria.alacucha" },
-  { nombre: "Lobo Mayorista", rubro: "Kioscos/Drugstores/Mecánica/Veterinarias/Super/Farmacias/Profesionales", instagram: "https://instagram.com/lobo_mayorista" },
-  { nombre: "Autoservicio Yvu Vera", rubro: "Kioscos/Drugstores/Mecánica/Veterinarias/Super/Farmacias/Profesionales", instagram: "https://instagram.com/yvuvera" },
-  { nombre: "Farmacia Barbieri", rubro: "Kioscos/Drugstores/Mecánica/Veterinarias/Super/Farmacias/Profesionales", instagram: "https://instagram.com/farmacia.barbieri.fcion" },
+  { nombre: "Drugstore Verde Esmeralda", rubro: "Kioscos y Drugstores", instagram: "https://instagram.com/drugstoreverde.esmeralda" },
+  { nombre: "Drugstore Urquiza", rubro: "Kioscos y Drugstores", instagram: "https://instagram.com/drugstoreurquiza_" },
+  { nombre: "Chetomal Drugstore", rubro: "Kioscos y Drugstores", instagram: "https://instagram.com/chetomaldrugstore" },
+  { nombre: "A La Cucha — Clínica Veterinaria", rubro: "Veterinarias", instagram: "https://instagram.com/veterinaria.alacucha" },
+  { nombre: "Lobo Mayorista", rubro: "Supermercados", instagram: "https://instagram.com/lobo_mayorista" },
+  { nombre: "Autoservicio Yvu Vera", rubro: "Supermercados", instagram: "https://instagram.com/yvuvera" },
+  { nombre: "Farmacia Barbieri", rubro: "Farmacias", instagram: "https://instagram.com/farmacia.barbieri.fcion" },
 ];

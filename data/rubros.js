@@ -18,10 +18,23 @@ const RUBROS = [
   { nombre: "Instituciones", etiqueta: "Instituciones", icono: "building" },
   { nombre: "Belleza y Estética", etiqueta: "Belleza y estética", icono: "sparkle" },
   { nombre: "Gráficas/Tecnología", etiqueta: "Gráficas y tecnología", icono: "laptop" },
-  { nombre: "Restaurantes/Cafeterías/Carnicerías", etiqueta: "Restaurantes y cafeterías", icono: "utensils" },
   { nombre: "Medios/Regionales/Excursiones", etiqueta: "Medios y excursiones", icono: "newspaper" },
   { nombre: "Hogar/Inmobiliarias", etiqueta: "Hogar e inmobiliarias", icono: "home" },
-  { nombre: "Distribuidoras/Pizzerías/Verdulerías", etiqueta: "Pizzerías y verdulerías", icono: "truck" },
-  { nombre: "Pinturerías/Panaderías/Corralones", etiqueta: "Pinturerías y panaderías", icono: "paint" },
-  { nombre: "Kioscos/Drugstores/Mecánica/Veterinarias/Super/Farmacias/Profesionales", etiqueta: "Kioscos y farmacias", icono: "basket" },
+
+  { nombre: "Restaurantes", etiqueta: "Restaurantes", icono: "utensils" },
+  { nombre: "Cafeterías", etiqueta: "Cafeterías", icono: "cup" },
+  { nombre: "Carnicerías", etiqueta: "Carnicerías", icono: "meat" },
+
+  { nombre: "Distribuidoras", etiqueta: "Distribuidoras", icono: "truck" },
+  { nombre: "Pizzerías", etiqueta: "Pizzerías", icono: "utensils" },
+  { nombre: "Verdulerías", etiqueta: "Verdulerías", icono: "basket" },
+
+  { nombre: "Pinturerías", etiqueta: "Pinturerías", icono: "paint" },
+  { nombre: "Panaderías", etiqueta: "Panaderías", icono: "bread" },
+  { nombre: "Corralones", etiqueta: "Corralones", icono: "building" },
+
+  { nombre: "Kioscos y Drugstores", etiqueta: "Kioscos y drugstores", icono: "bag" },
+  { nombre: "Veterinarias", etiqueta: "Veterinarias", icono: "paw" },
+  { nombre: "Supermercados", etiqueta: "Supermercados", icono: "basket" },
+  { nombre: "Farmacias", etiqueta: "Farmacias", icono: "cross" },
 ];
