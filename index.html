@@ -45,8 +45,9 @@
   <div class="max-w-md mx-auto mb-8">
     <div class="relative">
       <svg class="w-4 h-4 absolute left-4 top-1/2 -translate-y-1/2 text-[#a5551a]/60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-      <input id="buscador-rubro" type="text" placeholder="Buscar por rubro o nombre de negocio..."
+      <input id="buscador-rubro" type="text" placeholder="Buscar por rubro o nombre de negocio..." autocomplete="off"
         class="w-full glass-card rounded-full pl-11 pr-4 py-3 text-sm outline-none focus:border-[#12798c]/60 transition-all duration-300">
+      <div id="resultados-negocios" class="hidden absolute left-0 right-0 top-full mt-2 glass-card !bg-white/95 rounded-2xl overflow-hidden z-20 text-left shadow-lg shadow-[#0b5461]/10"></div>
     </div>
     <p id="sin-resultados" class="hidden text-center text-sm text-[#7a6a5c] mt-4">No encontramos ningún rubro o negocio con ese nombre. Probá con otra palabra.</p>
   </div>
@@ -95,17 +96,54 @@
       cont.appendChild(a);
     });
 
+    var rubroPorNombre = {};
+    RUBROS.forEach(function (r) { rubroPorNombre[r.nombre] = r.etiqueta; });
+
     var buscador = document.getElementById("buscador-rubro");
     var sinResultados = document.getElementById("sin-resultados");
+    var resultadosNegocios = document.getElementById("resultados-negocios");
+
     buscador.addEventListener("input", function () {
-      var q = normalizar(buscador.value.trim());
-      var visibles = 0;
+      var qRaw = buscador.value.trim();
+      var q = normalizar(qRaw);
+
+      var visiblesRubros = 0;
       Array.from(cont.children).forEach(function (card) {
         var coincide = q === "" || card.dataset.busqueda.indexOf(q) !== -1;
         card.style.display = coincide ? "" : "none";
-        if (coincide) visibles++;
+        if (coincide) visiblesRubros++;
       });
-      sinResultados.classList.toggle("hidden", visibles > 0);
+
+      var negociosMatch = [];
+      if (q !== "") {
+        negociosMatch = NEGOCIOS.filter(function (n) {
+          return normalizar(n.nombre).indexOf(q) !== -1;
+        }).slice(0, 8);
+      }
+
+      if (negociosMatch.length > 0) {
+        resultadosNegocios.innerHTML = negociosMatch.map(function (n) {
+          return '<a href="' + n.instagram + '" target="_blank" rel="noopener" class="flex items-center justify-between gap-3 px-4 py-3 border-b border-[#f0e4d6] last:border-b-0 hover:bg-[#fbe9d8]/50 transition-colors">' +
+            '<span><span class="font-semibold text-sm block">' + n.nombre + '</span><span class="text-xs text-[#7a6a5c]">' + (rubroPorNombre[n.rubro] || n.rubro) + '</span></span>' +
+            '<svg class="w-4 h-4 text-[#12798c] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>' +
+          '</a>';
+        }).join("");
+        resultadosNegocios.classList.remove("hidden");
+      } else {
+        resultadosNegocios.innerHTML = "";
+        resultadosNegocios.classList.add("hidden");
+      }
+
+      sinResultados.classList.toggle("hidden", visiblesRubros > 0 || negociosMatch.length > 0 || q === "");
+    });
+
+    document.addEventListener("click", function (e) {
+      if (!e.target.closest("#buscador-rubro") && !e.target.closest("#resultados-negocios")) {
+        resultadosNegocios.classList.add("hidden");
+      }
+    });
+    buscador.addEventListener("focus", function () {
+      if (resultadosNegocios.innerHTML !== "") resultadosNegocios.classList.remove("hidden");
     });
   })();
 </script>
