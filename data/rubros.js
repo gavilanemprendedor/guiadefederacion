@@ -37,4 +37,8 @@ const RUBROS = [
   { nombre: "Veterinarias", etiqueta: "Veterinarias", icono: "paw" },
   { nombre: "Supermercados", etiqueta: "Supermercados", icono: "basket" },
   { nombre: "Farmacias", etiqueta: "Farmacias", icono: "cross" },
+
+  { nombre: "Maxikioskos", etiqueta: "Maxikioskos", icono: "bag" },
+  { nombre: "Remiserías", etiqueta: "Remiserías", icono: "car" },
+  { nombre: "Lavanderías", etiqueta: "Lavanderías", icono: "washer" },
 ];

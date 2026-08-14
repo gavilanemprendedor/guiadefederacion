@@ -150,4 +150,19 @@
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://guiadefederacion.netlify.app/listado.html?rubro=Maxikioskos</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://guiadefederacion.netlify.app/listado.html?rubro=Remiser%C3%ADas</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://guiadefederacion.netlify.app/listado.html?rubro=Lavander%C3%ADas</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
