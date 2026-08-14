@@ -42,6 +42,14 @@
 </section>
 
 <section id="rubros" class="max-w-6xl mx-auto px-6 pb-20">
+  <div class="max-w-md mx-auto mb-8">
+    <div class="relative">
+      <svg class="w-4 h-4 absolute left-4 top-1/2 -translate-y-1/2 text-[#a5551a]/60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input id="buscador-rubro" type="text" placeholder="Buscar un rubro (ej: farmacia, gimnasio, panadería...)"
+        class="w-full glass-card rounded-full pl-11 pr-4 py-3 text-sm outline-none focus:border-[#12798c]/60 transition-all duration-300">
+    </div>
+    <p id="sin-resultados" class="hidden text-center text-sm text-[#7a6a5c] mt-4">No encontramos ningún rubro con ese nombre. Probá con otra palabra.</p>
+  </div>
   <div id="rubros-contenedor" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3.5"></div>
 </section>
 
@@ -67,12 +75,16 @@
 <script>
   (function () {
     var cont = document.getElementById("rubros-contenedor");
+    function normalizar(s) {
+      return s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+    }
     RUBROS.forEach(function (r, i) {
       var count = NEGOCIOS.filter(function (n) { return n.rubro === r.nombre; }).length;
       var a = document.createElement("a");
       a.href = "listado.html?rubro=" + encodeURIComponent(r.nombre);
       a.className = "reveal opacity-0 translate-y-6 glass-card rounded-2xl p-5 flex flex-col gap-3 transition-all duration-300 hover:scale-[1.03] hover:border-[#12798c]/50";
       a.style.transitionDelay = ((i % 10) * 40) + "ms";
+      a.dataset.busqueda = normalizar(r.etiqueta);
       a.innerHTML =
         iconSvg(r.icono, "w-6 h-6") +
         '<div>' +
@@ -80,6 +92,19 @@
           '<p class="text-xs text-[#a5551a] mt-1">' + count + (count === 1 ? " negocio" : " negocios") + '</p>' +
         '</div>';
       cont.appendChild(a);
+    });
+
+    var buscador = document.getElementById("buscador-rubro");
+    var sinResultados = document.getElementById("sin-resultados");
+    buscador.addEventListener("input", function () {
+      var q = normalizar(buscador.value.trim());
+      var visibles = 0;
+      Array.from(cont.children).forEach(function (card) {
+        var coincide = q === "" || card.dataset.busqueda.indexOf(q) !== -1;
+        card.style.display = coincide ? "" : "none";
+        if (coincide) visibles++;
+      });
+      sinResultados.classList.toggle("hidden", visibles > 0);
     });
   })();
 </script>
