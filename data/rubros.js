@@ -41,4 +41,11 @@ const RUBROS = [
   { nombre: "Maxikioskos", etiqueta: "Maxikioskos", icono: "bag" },
   { nombre: "Remiserías", etiqueta: "Remiserías", icono: "car" },
   { nombre: "Lavanderías", etiqueta: "Lavanderías", icono: "washer" },
+
+  { nombre: "Mecánica", etiqueta: "Mecánica y lubricentros", icono: "wrench" },
+  { nombre: "Ferreterías", etiqueta: "Ferreterías", icono: "building" },
+  { nombre: "Dietéticas", etiqueta: "Dietéticas", icono: "leaf" },
+  { nombre: "Carpinterías", etiqueta: "Carpinterías", icono: "hammer" },
+  { nombre: "Regalerías", etiqueta: "Regalerías", icono: "gift" },
+  { nombre: "Gomerías", etiqueta: "Gomerías", icono: "car" },
 ];
